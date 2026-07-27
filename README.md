@@ -155,25 +155,8 @@ agent.run()
 <h3>SAMPLE OUTPUT:</h3>
 
 <pre>
-=== Medicine Prescribing AI Agent ===
+<img width="798" height="508" alt="Screenshot 2026-07-27 104157" src="https://github.com/user-attachments/assets/ef636f97-f88f-4168-8a64-697215d5a75a" />
 
---- Patient Details ---
-Room A : Temperature = 101°F
-Room B : Temperature = 97°F
-
-Agent moved to Room B
-Patient is healthy.
-
-Agent moved to Room A
-Patient has fever.
-Medicine Prescribed: Paracetamol
-Patient treated successfully.
-
---- Final Patient Status ---
-Room A : Temperature = 98.0°F
-Room B : Temperature = 97°F
-
-Final Performance Score = 0
 </pre>
 
 <hr>

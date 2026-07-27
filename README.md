@@ -1,60 +1,108 @@
-<h1>ExpNo 1 :Developing AI Agent with PEAS Description</h1>
-<h3>Name: Saravanan N</h3>
-<h3>Register Number/Staff Id: TSML006</h3>
+<h1>ExpNo 1 : Developing AI Agent with PEAS Description</h1>
 
+<h3>Name: K MONISHWAR</h3>
+<h3>Register Number : 212225230188</h3>
 
 <h3>AIM:</h3>
 <br>
-<p>To find the PEAS description for the given AI problem and develop an AI agent.</p>
-<br>
-<h3>Theory</h3>
-<h3>Medicine prescribing agent:</h3>
-<p>Such this agent prescribes medicine for fever (greater than 98.5 degrees) which we consider here as unhealthy, by the user temperature input, and another environment is rooms in the hospital (two rooms). This agent has to consider two factors one is room location and an unhealthy patient in a random room, the agent has to move from one room to another to check and treat the unhealthy person. The performance of the agent is calculated by incrementing performance and each time after treating in one room again it has to check another room so that the movement causes the agent to reduce its performance. Hence, agents prescribe medicine to unhealthy.</p>
-<hr>
-<h3>PEAS DESCRIPTION:</h3>
-<table>
-  <tr>
-    <td><strong>Agent Type</strong></td>
-    <td><strong>Performance</strong></td>
-     <td><strong>Environment</strong></td>
-    <td><strong>Actuators</strong></td>
-    <td><strong>Sensors</strong></td>
-  </tr>
-    <tr>
-    <td><strong>Medicine prescribing agent</strong></td>
-    <td><strong>Treating unhealthy, agent movement</strong></td>
-     <td><strong>Rooms, Patient</strong></td>
-    <td><strong>Medicine, Treatment</strong></td>
-    <td><strong>Location, Temperature of patient</strong></td>
-  </tr>
-</table>
-<hr>
-<H3>DESIGN STEPS</H3>
-<h3>STEP 1:Identifying the input:</h3>
-<p>Temperature from patients, Location.</p>
-<h3>STEP 2:Identifying the output:</h3>
-<p>Prescribe medicine if the patient in a random has a fever.</p>
-<h3>STEP 3:Developing the PEAS description:</h3>
-<p>PEAS description is developed by the performance, environment, actuators, and sensors in an agent.</p>
-<h3>STEP 4:Implementing the AI agent:</h3>
-<p>Treat unhealthy patients in each room. And check for the unhealthy patients in random room</p>
-<h3>STEP 5:</h3>
-<p>Measure the performance parameters: For each treatment performance incremented, for each movement performance decremented</p>
 
-<h3>Coding
-```
-    
-    import random 
-    class MedicineAgent:
+<p>To find the PEAS description for the given AI problem and develop an AI agent.</p>
+
+<br>
+
+<h3>Theory</h3>
+
+<h3>Medicine Prescribing Agent:</h3>
+
+<p>
+The medicine prescribing agent monitors the health condition of patients admitted in a hospital. The hospital consists of two rooms, Room A and Room B. Each room contains one patient whose body temperature is generated randomly.
+</p>
+
+<p>
+The agent checks the temperature of the patient in each room. If the patient's temperature is greater than 98.5 degrees Fahrenheit, the patient is considered unhealthy. The agent prescribes medicine and treats the patient by reducing the temperature to a normal value.
+</p>
+
+<p>
+After treating one room, the agent moves to the other room and repeats the same process. The movement of the agent decreases its performance, while successfully treating an unhealthy patient increases the performance.
+</p>
+
+<p>
+Hence, the medicine prescribing agent identifies unhealthy patients and prescribes medicine to improve their health condition.
+</p>
+
+<hr>
+
+<h3>PEAS DESCRIPTION:</h3>
+
+<table border="1">
+<tr>
+<td><strong>Agent Type</strong></td>
+<td><strong>Performance</strong></td>
+<td><strong>Environment</strong></td>
+<td><strong>Actuators</strong></td>
+<td><strong>Sensors</strong></td>
+</tr>
+
+<tr>
+<td><strong>Medicine Prescribing Agent</strong></td>
+<td><strong>Treat unhealthy patients and minimize unnecessary movement</strong></td>
+<td><strong>Hospital rooms and patients</strong></td>
+<td><strong>Medicine prescription and treatment</strong></td>
+<td><strong>Temperature sensor and room location</strong></td>
+</tr>
+</table>
+
+<hr>
+
+<h3>DESIGN STEPS</h3>
+
+<h3>STEP 1: Identifying the input:</h3>
+
+<p>
+Patient temperature and room location.
+</p>
+
+<h3>STEP 2: Identifying the output:</h3>
+
+<p>
+Prescribe medicine if the patient's temperature is greater than 98.5 degrees Fahrenheit.
+</p>
+
+<h3>STEP 3: Developing the PEAS description:</h3>
+
+<p>
+PEAS description is developed using the performance measure, environment, actuators and sensors of the medicine prescribing agent.
+</p>
+
+<h3>STEP 4: Implementing the AI agent:</h3>
+
+<p>
+The agent checks the temperature of patients in both rooms. If the patient has a fever, the agent prescribes medicine and treats the patient. The agent then moves to the next room and repeats the process.
+</p>
+
+<h3>STEP 5:</h3>
+
+<p>
+Measure the performance parameters. For every successful treatment, the performance is incremented. For every movement between rooms, the performance is decremented.
+</p>
+
+<h3>PYTHON PROGRAM:</h3>
+
+<pre>
+import random
+
+class MedicineAgent:
     def __init__(self):
         self.rooms = {
             "Room A": random.randint(96, 103),
             "Room B": random.randint(96, 103)
         }
+
         self.performance = 0
 
     def display_patients(self):
         print("\n--- Patient Details ---")
+
         for room, temp in self.rooms.items():
             print(f"{room} : Temperature = {temp}°F")
 
@@ -62,14 +110,19 @@
         temp = self.rooms[room]
 
         print(f"\nAgent moved to {room}")
-        self.performance -= 1      # Movement cost
 
-        if temp > 98.5:
+        self.performance -= 1
+
+        if temp &gt; 98.5:
             print("Patient has fever.")
             print("Medicine Prescribed: Paracetamol")
-            self.performance += 2 
+
+            self.performance += 2
+
             self.rooms[room] = 98.0
+
             print("Patient treated successfully.")
+
         else:
             print("Patient is healthy.")
 
@@ -79,24 +132,54 @@
         self.display_patients()
 
         room_order = list(self.rooms.keys())
+
         random.shuffle(room_order)
 
         for room in room_order:
             self.check_patient(room)
 
         print("\n--- Final Patient Status ---")
+
         for room, temp in self.rooms.items():
             print(f"{room} : Temperature = {temp}°F")
 
         print("\nFinal Performance Score =", self.performance)
 
 
-    # Main Program
-    agent = MedicineAgent()
-    agent.run()
-```
+agent = MedicineAgent()
+agent.run()
+</pre>
 
-<h3>output
-<img width="798" height="508" alt="image" src="https://github.com/user-attachments/assets/73b8892f-29d4-4360-9883-dc4be64f28fb" />
+<hr>
 
+<h3>SAMPLE OUTPUT:</h3>
 
+<pre>
+=== Medicine Prescribing AI Agent ===
+
+--- Patient Details ---
+Room A : Temperature = 101°F
+Room B : Temperature = 97°F
+
+Agent moved to Room B
+Patient is healthy.
+
+Agent moved to Room A
+Patient has fever.
+Medicine Prescribed: Paracetamol
+Patient treated successfully.
+
+--- Final Patient Status ---
+Room A : Temperature = 98.0°F
+Room B : Temperature = 97°F
+
+Final Performance Score = 0
+</pre>
+
+<hr>
+
+<h3>RESULT:</h3>
+
+<p>
+Thus, the PEAS description for the medicine prescribing agent was developed successfully, and the AI agent was implemented to identify unhealthy patients, prescribe medicine, and measure its performance based on movement and treatment.
+</p>

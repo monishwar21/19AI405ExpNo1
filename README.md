@@ -42,10 +42,9 @@
 <p>Measure the performance parameters: For each treatment performance incremented, for each movement performance decremented</p>
 
 <h1>Coding
-```
-  import random
-
-class MedicineAgent:
+```import random
+  
+    class MedicineAgent:
     def __init__(self):
         self.rooms = {
             "Room A": random.randint(96, 103),
@@ -91,7 +90,7 @@ class MedicineAgent:
         print("\nFinal Performance Score =", self.performance)
 
 
-# Main Program
-agent = MedicineAgent()
-agent.run()
+    # Main Program
+    agent = MedicineAgent()
+    agent.run()
 ```

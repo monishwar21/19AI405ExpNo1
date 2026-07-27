@@ -42,3 +42,56 @@
 <p>Measure the performance parameters: For each treatment performance incremented, for each movement performance decremented</p>
 
 <h1>Coding
+```
+  import random
+
+class MedicineAgent:
+    def __init__(self):
+        self.rooms = {
+            "Room A": random.randint(96, 103),
+            "Room B": random.randint(96, 103)
+        }
+        self.performance = 0
+
+    def display_patients(self):
+        print("\n--- Patient Details ---")
+        for room, temp in self.rooms.items():
+            print(f"{room} : Temperature = {temp}°F")
+
+    def check_patient(self, room):
+        temp = self.rooms[room]
+
+        print(f"\nAgent moved to {room}")
+        self.performance -= 1      # Movement cost
+
+        if temp > 98.5:
+            print("Patient has fever.")
+            print("Medicine Prescribed: Paracetamol")
+            self.performance += 2 
+            self.rooms[room] = 98.0
+            print("Patient treated successfully.")
+        else:
+            print("Patient is healthy.")
+
+    def run(self):
+        print("=== Medicine Prescribing AI Agent ===")
+
+        self.display_patients()
+
+        room_order = list(self.rooms.keys())
+        random.shuffle(room_order)
+
+        for room in room_order:
+            self.check_patient(room)
+
+        print("\n--- Final Patient Status ---")
+        for room, temp in self.rooms.items():
+            print(f"{room} : Temperature = {temp}°F")
+
+        print("\nFinal Performance Score =", self.performance)
+
+
+# Main Program
+agent = MedicineAgent()
+agent.run()
+```

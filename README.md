@@ -94,4 +94,6 @@
     # Main Program
     agent = MedicineAgent()
     agent.run()
-```
+```<h3>output<\h3><img width="798" height="508" alt="image" src="https://github.com/user-attachments/assets/73b8892f-29d4-4360-9883-dc4be64f28fb" />
+
+

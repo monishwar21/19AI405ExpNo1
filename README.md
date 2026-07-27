@@ -42,8 +42,9 @@
 <p>Measure the performance parameters: For each treatment performance incremented, for each movement performance decremented</p>
 
 <h3>Coding
-```import random
-  
+```
+    
+    import random 
     class MedicineAgent:
     def __init__(self):
         self.rooms = {
